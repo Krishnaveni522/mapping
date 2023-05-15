@@ -1,0 +1,51 @@
+@Entity
+public class Customer {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int customerId;
+
+    private String customerName;
+
+    private String customerEmail;
+
+    private Long customerPh;
+
+}
+
+
+@Entity
+public class Order1 {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int Id1;
+
+    private String orderDesc;
+
+    @OneToOne
+    private Customer customerid;
+
+
+    @OneToMany(mappedBy="order1")
+    private  List<Product> cust1=new ArrayList<>();
+
+}
+    @Entity
+public class Product {
+
+ 
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int productId;
+
+    private String productName;
+
+    private double productPrice;
+
+    private int Quantity;
+
+    @ManyToOne
+    private Order1 order1;
+
+}
